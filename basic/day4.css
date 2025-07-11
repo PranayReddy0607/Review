@@ -1,0 +1,35 @@
+#box{
+    background-color: rgb(167, 167, 255);
+    text-align: center;
+    font-size: 25px;
+    font-family: sans-serif;
+}
+#xox{
+    font-size: 10px;
+    color: rgb(190, 107, 6);
+}
+.heading{
+    color: red;
+}
+button{
+    background-color: rgb(103, 226, 103)
+}
+body{
+    text-align: center;
+}
+h1{
+    text-decoration: wavy plum underline;
+    text-transform: capitalize;
+}
+h1{
+    font-weight: lighter;
+}
+h2{
+font-size: 50px;
+line-height: 2ex;
+text-transform: capitalize;
+}
+h3{
+    font-family: sans-serif;
+}
+

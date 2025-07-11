@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pranay's Review Service</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #1e1e2f;
+      color: white;
+      padding: 20px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      color: #222;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+
+    form {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      background-color: #1e1e2f;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #343456;
+    }
+
+    #confirmation {
+      color: green;
+      text-align: center;
+      margin-top: 20px;
+      font-weight: 600;
+      display: none;
+    }
+
+    footer {
+      background-color: #eeeeee;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.95em;
+      color: #444;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav a {
+        margin-left: 0;
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div><strong>Pranay's Review Service</strong></div>
+      <div>
+        <a href="#welcome">Welcome</a>
+        <a href="#about">About Us</a>
+        <a href="#review">Submit Review</a>
+      </div>
+    </nav>
+  </header>
+
+  <section id="welcome">
+    <h1>Welcome</h1>
+    <p style="text-align: center;">
+      Welcome to Pranay's Review Service! Your opinion matters. Share your experience and help others make better decisions.
+    </p>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>
+      We believe in the power of shared experiences. Whether you had a great or challenging encounter with a product or service, your review helps build trust and transparency for everyone.
+      <br><br>
+      This platform was built to give you a voice. Let’s grow an honest and helpful community together!
+    </p>
+  </section>
+
+  <section id="review">
+    <h2>Submit a Review</h2>
+    <form id="reviewForm">
+      <div class="form-group">
+        <label for="name">Your Name *</label>
+        <input type="text" id="name" required />
+      </div>
+      <div class="form-group">
+        <label for="email">Your Email *</label>
+        <input type="email" id="email" required />
+      </div>
+      <div class="form-group">
+        <label for="reviewText">Your Review *</label>
+        <textarea id="reviewText" rows="5" required></textarea>
+      </div>
+      <button type="submit">Submit</button>
+      <div id="confirmation">Thank you! Your review has been submitted.</div>
+    </form>
+
+    <script>
+      const form = document.getElementById("reviewForm");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const review = document.getElementById("reviewText").value.trim();
+
+        if (!name || !email || !review) {
+          alert("All fields are required.");
+          return;
+        }
+
+        fetch("https://script.google.com/macros/s/AKfycbzUGAu80f-jK7p4IMrfnF3rbewA714SQ2jr9BUFR8oH4o8yBh2F0zsUSjJ-ipJtjDU8YA/exec", {
+          method: "POST",
+          body: JSON.stringify({ name, email, review }),
+          headers: { "Content-Type": "application/json" }
+        })
+        .then(res => {
+          if (res.ok) {
+            form.reset();
+            document.getElementById("confirmation").style.display = "block";
+            setTimeout(() => {
+              document.getElementById("confirmation").style.display = "none";
+            }, 4000);
+          } else {
+            alert("Failed to submit. Please try again.");
+          }
+        })
+        .catch(() => {
+          alert("Network error. Please try again later.");
+        });
+      });
+    </script>
+  </section>
+
+  <footer>
+    &copy; 2025 Pranay Reddy M. | Contact: <a href="mailto:pranayreddy0607@gmail.com">pranayreddy0607@gmail.com</a>
+  </footer>
+
+</body>
+</html>

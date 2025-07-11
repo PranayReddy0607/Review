@@ -1,0 +1,235 @@
+*{
+    margin: 0px;
+    font-family: arial;
+    border: border-box;
+  }
+  .navbar {
+    height: 50px;
+    background-color: rgb(19,25,33);
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Align items to the left */
+    justify-content: center;     /* This overrides the previous line */
+    align-items: center;
+    gap: 20px; 
+    padding-left: 10px;
+}
+.navbar {
+    justify-content: flex-start;
+}
+.navbar {
+    justify-content: center;
+}
+.navbar * {
+    margin: 0;
+    padding: 0;
+}
+
+
+.navbar a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+  .nav-add {
+    margin-left: 10px; /* Adds spacing from the logo */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    cursor: pointer; /* Optional: Adds pointer effect on hover */
+  }
+  .border:hover {
+    border: 2px solid white;
+}
+.logo {
+    background-image: url("https://th.bing.com/th/id/OIP.Nk90opHxy6_LLR6bw9CNgQHaFj?rs=1&pid=ImgDetMain");
+    background-size: cover;
+    justify-content: center;
+    height: 60px; /* This height is more than your navbar (50px) */
+    width: 100px;
+    border-radius: 10px;
+}
+.logo {
+    height: 40px;
+    width: 100px;
+}
+.navbar > * {
+    flex-shrink: 0;
+}
+
+a{
+    text-decoration: none;
+    color:white ;
+  }
+  .border{
+    border: 2px solid transparent;
+  }
+  .add-first{
+    font:0.85px;
+    color: rgb(204,204,204);
+    margin-left:14px ;
+  }
+  .add-icon{
+    display: flex;
+    align-items: center;
+  }
+  .add-second{
+    font-size: 1rem;
+    color:rgb(255,255,255);
+    margin-left: 3px;
+  }
+  .nav-search{
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    height: 40px;
+    width: 60%;
+    border-radius:3px ;
+    justify-content: space-evenly;
+  }
+  .nav-search:hover{
+    border:2px solid orange;
+  }
+  .search-select{
+    background-color: #f3f3f3;
+    width: 50px;
+    text-align: center;
+    border:none;
+  }
+  .search-input{
+    border: none;
+    font-size: 1rem;
+    width:100%;
+  }
+  .search-icons{
+    width: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0f1111;
+    background-color: #febd68;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+  span{
+    font-size: 0.8rem;
+  }
+  .nav-second{
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .nav-cart i{
+    font-size: 28px;
+  }
+  .nav-cart{
+    font-size: 0.85rem;
+    font-weight: 400;
+    
+  }
+  .panel{
+    padding: 10px;
+    height: 40px;
+    color: white;
+    display: flex;
+    align-items: center;
+    background-color: rgb(35,47,62);
+    justify-content: space-evenly;
+  }
+  .panel-opt p{
+    display: inline;
+    margin-left: 180px;
+  }
+  .panel-opt{
+    width: 90%;
+  }
+  
+  .hero-msg{
+    background-color: #f3f3f3;
+    color: black;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+  
+  }
+  .bg-img {
+    background-image: url('https://static.vecteezy.com/system/resources/previews/010/803/399/original/background-with-colorful-shopping-bags-illustration-sale-and-discount-concept-vector.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 110vh; /* Ensures it takes the full height of the viewport */
+  }  
+  .hero-msg a{
+    color:#0c5340;
+  }
+  .bg-img {
+    background-image: url('https://static.vecteezy.com/system/resources/previews/010/803/399/original/background-with-colorful-shopping-bags-illustration-sale-and-discount-concept-vector.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 700px;
+    position: relative;
+    padding: 20px 0; /* Adds space between navbar and content */
+  }
+  
+  /* Make boxes' backgrounds transparent to see the background */
+  .shop-section {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    background: transparent;
+  }
+  
+  .box {
+    height: 350px;
+    width: 20%;
+    background-color: rgba(255, 255, 255, 0.9); /* Slight transparency for readability */
+    border: 2px solid black;
+    border-radius: 20px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: adds depth */
+  }
+  .box1 {
+    background-image: url(https://i.redd.it/40854fntiat61.jpg);
+    background-size: cover;  /* Ensures the image fills the box */
+    background-position: center;  /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    height: 350px;  /* Set the height */
+    width: 30%;    /* Optional, ensures it takes full box width */
+    color: white;
+  }
+  .box2{
+    background-image: url(https://img.freepik.com/premium-photo/generative-ai-perspective-technological-advancements_972784-86.jpg);
+    background-size: cover;  /* Ensures the image fills the box */
+    background-position: center;  /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    height: 350px;  /* Set the height */
+    width: 30%;    /* Optional, ensures it takes full box width */
+    color: #f3f3f3;
+  }
+  .box3{
+    background-image: url(https://images.unsplash.com/photo-1582719188393-bb71ca45dbb9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80);
+    background-size: cover;  /* Ensures the image fills the box */
+    background-position: center;  /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    height: 350px;  /* Set the height */
+    width: 30%;    /* Optional, ensures it takes full box width */
+    color: #f3f3f3;
+}
+footer {
+    background-color: rgb(46, 39, 39);
+    color: white;
+    padding: 20px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-msg{
+    background-color: antiquewhite;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Clothing Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">My Fashion Store</div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#men">Men</a></li>
+                <li><a href="#women">Women</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Discover Your Style</h1>
+            <p>Explore our latest collection of trendy clothing for men and women.</p>
+            <a href="#products" class="btn">Shop Now</a>
+        </div>
+    </section>
+
+    <section id="men" class="products">
+        <h2>Men's Clothing</h2>
+        <div class="product-grid">
+            <div class="product">
+                <img src="mens_shirt.jpg" alt="Men's Shirt">
+                <h3>Casual Shirt</h3>
+                <p>$29.99</p>
+                <button class="add-to-cart" data-name="Casual Shirt" data-price="29.99">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="mens_pants.jpg" alt="Men's Pants">
+                <h3>Slim Fit Pants</h3>
+                <p>$39.99</p>
+                <button class="add-to-cart" data-name="Slim Fit Pants" data-price="39.99">Add to Cart</button>
+            </div>
+            </div>
+    </section>
+
+    <section id="women" class="products">
+        <h2>Women's Clothing</h2>
+        <div class="product-grid">
+            <div class="product">
+                <img src="womens_dress.jpg" alt="Women's Dress">
+                <h3>Summer Dress</h3>
+                <p>$49.99</p>
+                <button class="add-to-cart" data-name="Summer Dress" data-price="49.99">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="womens_jeans.jpg" alt="Women's Jeans">
+                <h3>Skinny Jeans</h3>
+                <p>$59.99</p>
+                <button class="add-to-cart" data-name="Skinny Jeans" data-price="59.99">Add to Cart</button>
+            </div>
+            </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <p>Email: info@mystore.com</p>
+        <p>Phone: 123-456-7890</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 My Fashion Store</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
