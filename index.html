@@ -181,80 +181,80 @@
 
     <script>
       const form = document.getElementById("reviewForm");
-      // IMPORTANT: Replace this URL with your ACTUAL deployed Google Apps Script Web App URL
-      // Make sure it ends with /exec
-      const googleAppsScriptURL = "https://script.google.com/macros/s/AKfycbxXxrLqK8qVhBdEyNbOx2TNlCIN4l_4fu0EUEeGQQhgGH3aiJ6Ds9dZHws2JAtHexuWTA/exec";
-
+      // PASTE YOUR ACTUAL DEPLOYED GOOGLE APPS SCRIPT WEB APP URL HERE
+      const googleAppsScriptURL = "https://script.google.com/macros/s/AKfycbwP1yC41WqU0zVwDy0LiJAdsV0lQWKkIQes5S3713IkdFaSV0qhRwKeL8w9gdEV-K55Cw/exec"; // <--- UPDATE THIS URL
+    
       form.addEventListener("submit", function (e) {
-        e.preventDefault();
-
+        e.preventDefault(); // Prevent default form submission
+    
         const name = document.getElementById("name").value.trim();
         const email = document.getElementById("email").value.trim();
         const review = document.getElementById("reviewText").value.trim();
-
+    
         if (!name || !email || !review) {
           alert("All fields are required.");
           return;
         }
-
+    
         // Disable button and show a loading state
         const submitButton = form.querySelector('button[type="submit"]');
         submitButton.disabled = true;
         submitButton.textContent = "Submitting...";
-
+        document.getElementById("confirmation").style.display = "none"; // Hide previous messages
+    
         fetch(googleAppsScriptURL, {
           method: "POST",
-          mode: "cors", // Ensure CORS mode is used
-          body: JSON.stringify({ name, email, review }),
+          mode: "cors", // Required for cross-origin requests
+          body: JSON.stringify({ name, email, review }), // Send data as JSON
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json" // Tell server we're sending JSON
           }
         })
         .then(response => {
-          if (response.ok) { // Check if the HTTP status is 2xx
-            return response.json(); // Parse the JSON response from Apps Script
+          if (response.ok) { // Check if the HTTP status is 2xx (Success)
+            return response.json(); // Parse JSON response from Apps Script
           } else {
-            // If response is not OK, try to read the server's error message
+            // If response is not OK, throw an error with server's message
             return response.text().then(text => {
-                throw new Error("Server error: " + text);
+                throw new Error("Server error (" + response.status + "): " + text);
             });
           }
         })
         .then(data => {
-          // 'data' will be the JSON response from your Apps Script
+          // 'data' is the JSON object returned from your Apps Script
           if (data.status === "success") {
-            form.reset();
+            form.reset(); // Clear the form
             document.getElementById("confirmation").textContent = data.message || "Thank you! Your review has been submitted.";
             document.getElementById("confirmation").style.display = "block";
-            document.getElementById("confirmation").style.color = "green"; // Ensure it's green for success
+            document.getElementById("confirmation").style.color = "green";
             setTimeout(() => {
               document.getElementById("confirmation").style.display = "none";
             }, 4000);
           } else {
-            // If Apps Script sent a 'status: "error"' response
+            // If Apps Script returns an error status (e.g., if there's a problem sending email)
             alert("Submission failed: " + (data.message || "Unknown error from server."));
             console.error("Apps Script Error Response:", data);
-            document.getElementById("confirmation").textContent = data.message || "Failed to submit. Please try again.";
+            document.getElementById("confirmation").textContent = "Failed: " + (data.message || "Unknown error.");
             document.getElementById("confirmation").style.display = "block";
-            document.getElementById("confirmation").style.color = "red"; // Make it red for error
+            document.getElementById("confirmation").style.color = "red";
             setTimeout(() => {
               document.getElementById("confirmation").style.display = "none";
             }, 4000);
           }
         })
         .catch(error => {
-          // This catches network errors or errors thrown from the .then blocks
-          console.error("Fetch Error:", error);
-          alert("Network error: " + error.message + ". Please check your internet connection and try again.");
-          document.getElementById("confirmation").textContent = "Network error or client-side issue. Check console for details.";
+          // This catches network errors (like CORS) or errors thrown from the .then blocks
+          console.error("Fetch Error:", error); // Log the full error object
+          alert("Network error: " + error.message + ". Please check your internet connection or server configuration.");
+          document.getElementById("confirmation").textContent = "Network error. Please try again later. (Check console for details)";
           document.getElementById("confirmation").style.display = "block";
-          document.getElementById("confirmation").style.color = "red"; // Make it red for error
+          document.getElementById("confirmation").style.color = "red";
           setTimeout(() => {
               document.getElementById("confirmation").style.display = "none";
             }, 4000);
         })
         .finally(() => {
-            // Re-enable button regardless of success or failure
+            // Always re-enable the button
             submitButton.disabled = false;
             submitButton.textContent = "Submit";
         });
